@@ -52,13 +52,16 @@
 
 @section('after-scripts-end')
     <script>
-        $(function() {
-            var data = {!! $reports !!};
-
-            new Chart($('#stats-doughnut-chart')[0].getContext('2d'))
-                .Doughnut(data, {
-                    animationEasing : "easeOutQuart"
-                });
+    $(function() {
+        new Chart($('canvas#stats-doughnut-chart'), {
+            type: 'doughnut',
+            data: {!! $chartData !!},
+            options: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
         });
+    });
     </script>
 @endsection
